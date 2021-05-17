@@ -67,22 +67,27 @@ class NewVsitorTest(LiveServerTestCase):
 		)
 
 		
-		self.fail('Finish the test!')
-
 		# Ela digita "Comprar anzol" em uma nova caixa de texto
+
+		inputbox.send_keys('Comprar anzol')
 
 		# e assinala prioridade alta no campo de seleção de prioridades
 
-		 
+		select.select_by_visible_text('Prioridade Alta')
 
 		# Quando ela tecla enter, a página é atualizada, e agora
+
+		inputbox.send_keys(Keys.ENTER)
 
 		# a página lista "1 - Comprar anzol - prioridade alta"
 
 		# como um item em uma lista de tarefas
 
+		self.wait_for_row_in_list_table('1 - Comprar anzol - Prioridade Alta')
 		 
 
+		time.sleep(3)
+		"""
 		# Ainda continua havendo uma caixa de texto convidando-a a 
 
 		# acrescentar outro item. Ela insere "Comprar cola instantâne"
@@ -112,7 +117,7 @@ class NewVsitorTest(LiveServerTestCase):
 		 
 
 		################################# FIM ####################################
-		
+		"""
 
 	def test_can_start_a_list_for_one_user(self):
 		# Edith ouviu falar de uma nova aplicação online interessante
