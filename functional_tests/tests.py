@@ -83,10 +83,12 @@ class NewVsitorTest(LiveServerTestCase):
 
 		# como um item em uma lista de tarefas
 
-		self.wait_for_row_in_list_table('1 - Comprar anzol - Prioridade Alta')
+		self.wait_for_row_in_list_table('1: Comprar anzol - Prioridade Alta')
 		 
 
 		time.sleep(3)
+		self.browser.quit()
+		self.browser = webdriver.Firefox()
 		"""
 		# Ainda continua havendo uma caixa de texto convidando-a a 
 
