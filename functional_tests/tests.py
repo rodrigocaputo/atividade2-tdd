@@ -50,24 +50,24 @@ class NewVsitorTest(LiveServerTestCase):
 		header_text = self.browser.find_element_by_tag_name('h1').text
 		self.assertIn('Priority To-Do', header_text)
 
-		self.fail('Finish the test!')
-
-"""
 		# Ela é convidada a inserir um item de tarefa e a prioridade da 
 
 		# mesma imediatamente
 
-		inputbox = Select(self.browser.find_element_by_id('id_new_item'))
+		inputbox = self.browser.find_element_by_id('id_new_item')
 		self.assertEqual(
 			inputbox.get_attribute('placeholder'),
 			'Enter a to-do item'
 		)
 
-		select = self.browser.find_element_by_id('priority_new_item')
+		select = Select(self.browser.find_element_by_id('priority_new_item'))
 		self.assertEqual(
-			select.get_attribute('placeholder'),
+			select.first_selected_option.text,
 			'Prioridade Normal'
 		)
+
+		"""
+		self.fail('Finish the test!')
 
 		# Ela digita "Comprar anzol" em uma nova caixa de texto
 
@@ -112,6 +112,7 @@ class NewVsitorTest(LiveServerTestCase):
 		 
 
 		################################# FIM ####################################
+		"""
 
 	def test_can_start_a_list_for_one_user(self):
 		# Edith ouviu falar de uma nova aplicação online interessante
@@ -212,4 +213,4 @@ class NewVsitorTest(LiveServerTestCase):
 
 		# Fim
 
-"""
+# """
