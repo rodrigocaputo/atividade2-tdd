@@ -46,7 +46,7 @@ class NewVsitorTest(LiveServerTestCase):
 
 		 
 
-		self.assertIn('To-Do', self.browser.title)
+		self.assertIn('Priority To-Do', self.browser.title)
 		header_text = self.browser.find_element_by_tag_name('h1').text
 		self.assertIn('Priority To-Do', header_text)
 
