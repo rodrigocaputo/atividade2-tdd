@@ -66,7 +66,7 @@ class NewVsitorTest(LiveServerTestCase):
 			'Prioridade Normal'
 		)
 
-		"""
+		
 		self.fail('Finish the test!')
 
 		# Ela digita "Comprar anzol" em uma nova caixa de texto
@@ -112,7 +112,7 @@ class NewVsitorTest(LiveServerTestCase):
 		 
 
 		################################# FIM ####################################
-		"""
+		
 
 	def test_can_start_a_list_for_one_user(self):
 		# Edith ouviu falar de uma nova aplicação online interessante
