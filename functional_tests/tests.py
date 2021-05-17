@@ -86,25 +86,40 @@ class NewVsitorTest(LiveServerTestCase):
 		self.wait_for_row_in_list_table('1: Comprar anzol - Prioridade Alta')
 		 
 
-		time.sleep(3)
-		self.browser.quit()
-		self.browser = webdriver.Firefox()
-		"""
 		# Ainda continua havendo uma caixa de texto convidando-a a 
+
+		inputbox = self.browser.find_element_by_id('id_new_item')
 
 		# acrescentar outro item. Ela insere "Comprar cola instantâne"
 
+		inputbox.send_keys("Comprar cola instantâne")
+
 		# e assinala prioridade baixa pois ela ainda tem cola suficiente
+
+		select = Select(self.browser.find_element_by_id('priority_new_item'))
+		self.assertEqual(
+			select.first_selected_option.text,
+			'Prioridade Normal'
+		)
+		select.select_by_visible_text('Prioridade Baixa')
 
 		# por algum tempo
 
-		 
+		inputbox.send_keys(Keys.ENTER)
+
+		# A página é atualizada novamente e agora mostra os dois
+		# itens em sua lista
 
 		# A página é atualizada novamente e agora mostra os dois
 
 		# itens em sua lista e as respectivas prioridades
 
+		self.wait_for_row_in_list_table('1: Comprar anzol - Prioridade Alta')
+		self.wait_for_row_in_list_table('2: Comprar cola instantâne - Prioridade Baixa')
+
 		 
+		self.browser.quit()
+		self.browser = webdriver.Firefox()
 
 		# Edith se pergunta se o site lembrará de sua lista. Então
 
@@ -119,7 +134,7 @@ class NewVsitorTest(LiveServerTestCase):
 		 
 
 		################################# FIM ####################################
-		"""
+		
 
 	def test_can_start_a_list_for_one_user(self):
 		# Edith ouviu falar de uma nova aplicação online interessante
